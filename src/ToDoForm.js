@@ -18,6 +18,7 @@ function ToDoForm({ addTask }) {
             setTaskInput('')
         } else {
             setError(true)
+            setTaskInput('')
         }
 
     }

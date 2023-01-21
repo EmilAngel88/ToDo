@@ -14,15 +14,12 @@ function App() {
     }, [todo])
 
     const addTask = (task) => {
-        if (task) {
-            const newItem = {
-                id: Math.random().toString(36).substring(2,9),
-                task: task,
-                complete: false,
-                editing: false,
-            }
-            setTodo([...todo, newItem])
+        const newItem = {
+            id: Math.random().toString(36).substring(2,9),
+            task: task,
+            complete: false,
         }
+        setTodo([...todo, newItem])
     }
 
     const removeTask = (id) => {

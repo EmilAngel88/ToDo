@@ -13,6 +13,7 @@ function ToDo ({ todo, toggleTask, removeTask, saveEditTask }) {
             setEditingFlag(false)
         } else {
             setError(true)
+            setEditingTask('')
         }
 
     }
@@ -23,7 +24,7 @@ function ToDo ({ todo, toggleTask, removeTask, saveEditTask }) {
     }
 
     const handleEdit = () => {
-        setEditingFlag(true)
+        setEditingFlag(!editingFlag)
         setEditingTask(todo.task)
     }
 
@@ -42,7 +43,8 @@ function ToDo ({ todo, toggleTask, removeTask, saveEditTask }) {
                             onChange={handleChange}
                             className={`form-control ${error ? 'is-invalid' : ''}`}
                         />
-                        <button className={'btn btn-primary'}>Save</button>
+                        <button onClick={() => handleEdit()} className={'btn btn-success btn-sm'}>Cansel</button>
+                        <button className={'btn btn-primary btn-sm'}>Save</button>
                     </form>
                     { error
                         ? <h5 className={'text-center text-danger'}>Error: void task</h5>
