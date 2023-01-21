@@ -23,7 +23,8 @@ function ToDo ({ todo, toggleTask, removeTask, saveEditTask }) {
         setEditingTask(e.target.value)
     }
 
-    const handleEdit = () => {
+    const handleEdit = (e) => {
+        if(e) e.preventDefault()
         setEditingFlag(!editingFlag)
         setEditingTask(todo.task)
     }
@@ -36,15 +37,25 @@ function ToDo ({ todo, toggleTask, removeTask, saveEditTask }) {
 
             {editingFlag
                 ? <div>
-                    <form className={'d-flex'} onSubmit={handleSubmit}>
+                    <form
+                        className={'d-flex'}
+                        onSubmit={handleSubmit}
+                    >
                         <input
                             type="text"
                             value={editingTask}
                             onChange={handleChange}
                             className={`form-control ${error ? 'is-invalid' : ''}`}
                         />
-                        <button onClick={() => handleEdit()} className={'btn btn-success btn-sm'}>Cansel</button>
-                        <button className={'btn btn-primary btn-sm'}>Save</button>
+                        <button className={'btn btn-primary btn-sm'}>
+                            Save
+                        </button>
+                        <button
+                            onClick={handleEdit}
+                            className={'btn btn-success btn-sm'}
+                        >
+                            Cansel
+                        </button>
                     </form>
                     { error
                         ? <h5 className={'text-center text-danger'}>Error: void task</h5>
@@ -82,8 +93,6 @@ function ToDo ({ todo, toggleTask, removeTask, saveEditTask }) {
                     </div>
                 </div>
             }
-
-
         </li>
     )
 }

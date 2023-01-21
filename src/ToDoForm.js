@@ -31,15 +31,20 @@ function ToDoForm({ addTask }) {
     return (
         <div className={'d-flex flex-column align-items-center mb-4'}>
             <div className={'form-group mb-2'}>
-                <form className={'d-flex'} onSubmit={handleSubmit}>
+                <form
+                    className={'d-flex'}
+                    onSubmit={handleSubmit}
+                >
                     <input
                         type="text"
                         value={taskInput}
                         onChange={handleChange}
-                        placeholdecr='Enter task...'
+                        placeholder='Enter task...'
                         className={`form-control ${error ? 'is-invalid' : ''}`}
                     />
-                    <button className={'btn btn-primary'}>Save</button>
+                    <button className={'btn btn-primary'}>
+                        Save
+                    </button>
                 </form>
             </div>
             { error
