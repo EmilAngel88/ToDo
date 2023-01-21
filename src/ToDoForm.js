@@ -1,8 +1,15 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function ToDoForm({ addTask }) {
-    const [taskInput, setTaskInput] = useState('')
+    const [taskInput, setTaskInput] = useState(()=> {
+        const input = localStorage.getItem('input');
+        return input ? input : ''
+    })
     const [error, setError] = useState(false)
+
+    useEffect(() => {
+        localStorage.setItem('input', taskInput);
+    }, [taskInput])
 
     const handleSubmit = (e) => {
         e.preventDefault()
