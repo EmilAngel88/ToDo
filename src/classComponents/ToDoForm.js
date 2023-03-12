@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class ToDoForm extends Component {
     state = {
@@ -57,6 +58,18 @@ class ToDoForm extends Component {
             </div>
         );
     }
+}
+
+ToDoForm.propTypes = {
+    error: PropTypes.bool,
+    addTask: PropTypes.func,
+    setError: PropTypes.func,
+}
+
+ToDoForm.defaultProps = {
+    error: false,
+    addTask: () => {},
+    setError: () => {},
 }
 
 export default ToDoForm;

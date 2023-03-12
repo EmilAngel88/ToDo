@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class ToDoHeader extends Component {
     render() {
@@ -23,6 +24,14 @@ class ToDoHeader extends Component {
             </header>
         );
     }
+}
+
+ToDoHeader.propTypes = {
+    toDoList: PropTypes.array,
+}
+
+ToDoHeader.defaultProps = {
+    toDoList: [],
 }
 
 export default ToDoHeader;
