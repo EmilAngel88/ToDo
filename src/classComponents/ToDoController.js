@@ -6,6 +6,7 @@ class ToDoController extends Component {
     state = {
         error: false,
         toDoList: [],
+        taskInput: '',
     }
 
     addTask = (task) => {
@@ -26,16 +27,37 @@ class ToDoController extends Component {
         });
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        if (this.state.taskInput.trim()) {
+            this.addTask(this.state.taskInput);
+            this.setState({
+                taskInput: ''
+            })
+        } else {
+            this.state.setError(true)
+        }
+    }
+
+    handleChange = (e) => {
+        this.setError(false)
+
+        this.setState({
+            taskInput: e.target.value
+        })
+    }
+
     render() {
         return(
-            <div>
+            <>
                 <ToDoHeader toDoList={this.state.toDoList}/>
                 <ToDoForm
                     error={this.state.error}
-                    setError={this.setError}
-                    addTask={this.addTask}
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    taskInput={this.state.taskInput}
                 />
-            </div>
+            </>
         );
     }
 }
